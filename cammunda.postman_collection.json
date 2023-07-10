@@ -1,0 +1,219 @@
+{
+	"info": {
+		"_postman_id": "43d2b0d7-7f62-4c13-bd3a-2152b3f2ef67",
+		"name": "cammunda",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "deploy cammunda diagram",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "diagram",
+							"type": "file",
+							"src": "/Users/divya/Downloads/CamundaKafkaSpringBoot/src/main/resources/workflow/welcome.bpmn"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/engine-rest/deployment/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"engine-rest",
+						"deployment",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get process definitions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/engine-rest/process-definition",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"engine-rest",
+						"process-definition"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "start process",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \n  \"variables\": {\n\t\"isUtDone\": {\n  \t\"value\": \"false\",\n  \t\"type\": \"Boolean\"\n    }}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/engine-rest/process-definition/key/Process_0pzon12/start",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"engine-rest",
+						"process-definition",
+						"key",
+						"Process_0pzon12",
+						"start"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "complete task",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \n   \n  \"variables\": {\n\t\"isUtDone\": {\n  \t\"value\": \"true\",\n  \t\"type\": \"Boolean\"\n    }}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/engine-rest/task/4f6e7e6e-1f50-11ee-ab53-62bfdb02336e/complete",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"engine-rest",
+						"task",
+						"4f6e7e6e-1f50-11ee-ab53-62bfdb02336e",
+						"complete"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get taks",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/engine-rest/task?processInstanceId=4f6de226-1f50-11ee-ab53-62bfdb02336e",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"engine-rest",
+						"task"
+					],
+					"query": [
+						{
+							"key": "processInstanceId",
+							"value": "4f6de226-1f50-11ee-ab53-62bfdb02336e"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get a task by task id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/engine-rest/task/99f66a8c-1f28-11ee-ab53-62bfdb02336e",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"engine-rest",
+						"task",
+						"99f66a8c-1f28-11ee-ab53-62bfdb02336e"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get task input parament + process variables by task id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/engine-rest/task/f658b51c-1f4f-11ee-ab53-62bfdb02336e/variables",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"engine-rest",
+						"task",
+						"f658b51c-1f4f-11ee-ab53-62bfdb02336e",
+						"variables"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get variables by process id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/engine-rest/process-instance/99f4e3e4-1f28-11ee-ab53-62bfdb02336e/variables",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"engine-rest",
+						"process-instance",
+						"99f4e3e4-1f28-11ee-ab53-62bfdb02336e",
+						"variables"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
